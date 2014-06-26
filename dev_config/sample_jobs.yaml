@@ -1,0 +1,21 @@
+- project:
+    name: 'test'
+    jobs:
+        - '{name}_commons-lang'
+- job-template:
+    project-type: freestyle
+    defaults: global
+    description: |
+        Sample build for apache commons-lang
+    disabled: false
+    concurrent: false
+    block-downstream: false
+    block-upstream: false
+    name: '{name}_commons-lang'
+    triggers:
+        - pollscm: "* * * * *"
+    builders:
+        - ant:
+            ant-name: Ant 1.8.4
+            targets: compile
+            buildfile: "/Users/mhjkc/Developer/git/commons-lang/build.xml"
